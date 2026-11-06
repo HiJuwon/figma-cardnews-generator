@@ -1,0 +1,28 @@
+# .coderabbit.yaml
+language: ko-KR
+
+reviews:
+  profile: chill            # chill: 핵심 위주 / assertive: 더 꼼꼼하고 깐깐하게
+  high_level_summary: true  # PR 본문에 변경 요약 자동 추가
+  poem: false               # 리뷰 끝에 붙는 시 끄기
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+      - develop
+
+  path_instructions:
+    - path: "src/shared/**"
+      instructions: |
+        UI와 plugin이 함께 import하는 파일이다.
+        React, DOM, Figma API에 의존하는 코드가 없는지 확인한다.
+    - path: "src/plugin/**"
+      instructions: |
+        Figma Plugin API 코드다. DOM API(window, document 등)를 쓰면 안 된다.
+        오토 레이아웃의 layoutSizingHorizontal/Vertical = 'FILL'이 appendChild 이후에 설정되었는지 확인한다.
+        텍스트를 수정하기 전에 figma.loadFontAsync가 호출되었는지 확인한다.
+    - path: "src/ui/**"
+      instructions: |
+        React + Tailwind로 만든 플러그인 입력 화면이다.
+        plugin과 통신할 때 shared/messages.ts의 타입을 사용하는지 확인한다.
