@@ -7,5 +7,5 @@
     "noEmit": true,
     "types": ["@figma/plugin-typings"]
   },
-  "include": ["./**/*.ts"]
+  "include": ["src/ui", "src/shared"]
 }
