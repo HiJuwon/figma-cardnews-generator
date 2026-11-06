@@ -4,7 +4,7 @@
   "description": "Instagram card news generator Figma plugin",
   "private": true,
   "scripts": {
-    "build:code": "esbuild src/plugin/code.ts --bundle --target=es2020 --outfile=dist/code.js",
+    "build:code": "esbuild src/plugin/code.ts --bundle --target=es2020 --loader:.svg=text --outfile=dist/code.js",
     "build:ui": "vite build",
     "build": "npm run build:code && npm run build:ui",
     "dev": "concurrently -n code,ui \"npm run build:code -- --watch\" \"vite build --watch\"",
